@@ -10,6 +10,8 @@
     <tr>
       <td><a href="<%= url.long_url %>"><%= url.long_url %></a></td>
       <td><a href="<%= url.short_url %>"><%= url.short_url %></a></td>
+      <td><%= link_to 'Show url', url_path(url) %></td>
+      <!-- You can just use the object. url_path will automatically find the id of it and use it -->
     </tr>
     <% end %>
   </tbody>
