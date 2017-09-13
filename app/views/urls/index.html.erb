@@ -1,0 +1,22 @@
+<%= link_to 'Shorten a URL!', new_url_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Long Url</th>
+      <th>Short Url</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @urls.each do |url| %>
+    <tr>
+      <td><a href="<%= url.long_url %>"><%= url.long_url %></a></td>
+      <td> <%= link_to url.short_url, controller: :urls, action: :short, id: url %></a> </td>
+      <td><%= link_to 'Show url', url_path(url) %></td>
+      <td><%= link_to 'Delete', url_path(url), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+      <!-- You can just use the object. url_path will automatically find the id of it and use it -->
+    </tr>
+    <% end %>
+  </tbody>
+</table>
