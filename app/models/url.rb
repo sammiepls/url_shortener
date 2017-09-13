@@ -3,7 +3,7 @@ require 'uri'
 
 class Url < ApplicationRecord
   before_create :shorten
-  validates :ori_url, presence: true
+  validates :long_url, presence: true
   validate :url_format
 
 
@@ -13,7 +13,7 @@ class Url < ApplicationRecord
 
   def url_format
     begin
-      errors.add(:url, "Invalid url") unless URI(self.ori_url).is_a?(URI::HTTP)
+      errors.add(:url, "Invalid url") unless URI(self.long_url).is_a?(URI::HTTP)
     rescue URI::InvalidURIError
       errors.add(:url, "Invalid url")
     end
